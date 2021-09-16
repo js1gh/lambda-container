@@ -10,6 +10,7 @@ resource "aws_ecr_repository" "repo" {
   name = local.ecr_repository_name
 
 
+
   provisioner "local-exec" {
     command = <<EOF
           docker login -u AWS -p $(aws ecr get-login-password --region ${var.region}) |  docker login --username AWS --password-stdin ${local.account_id}.dkr.ecr.${var.region}.amazonaws.com
